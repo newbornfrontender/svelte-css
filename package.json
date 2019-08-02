@@ -1,0 +1,47 @@
+{
+  "name": "svelte-css",
+  "version": "1.0.0",
+  "repository": "https://github.com/newbornfrontender/svelte-css.git",
+  "author": "Infant Frontender <newbornfrontender@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "postcss": "^7.0.17",
+    "postcss-html": "^0.36.0",
+    "postcss-load-config": "^2.1.0",
+    "postcss-preset-env": "^6.7.0",
+    "postcss-syntax": "^0.36.2",
+    "postcss-use": "^3.0.0",
+    "prettier": "^1.18.2",
+    "prettier-plugin-svelte": "^0.7.0",
+    "rimraf": "^2.6.3",
+    "rollup": "^1.17.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-svelte": "^5.1.0",
+    "rollup-pluginutils": "^2.8.1",
+    "svelte": "^3.6.9"
+  },
+  "scripts": {
+    "format": "prettier --write **/*.{svelte,html,js,json}",
+    "start": "rollup -c -w",
+    "build": "rollup -c"
+  },
+  "browserslist": [
+    "last 1 chrome version"
+  ],
+  "prettier": {
+    "printWidth": 100,
+    "useTabs": false,
+    "tabWidth": 2,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "arrowParens": "always"
+  },
+  "babel": {
+    "presets": [
+      "@babel/env"
+    ]
+  }
+}
