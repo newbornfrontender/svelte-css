@@ -1,13 +1,15 @@
 import resolve from 'rollup-plugin-node-resolve';
 import svelte from 'rollup-plugin-svelte';
 import babel from 'rollup-plugin-babel';
-import postcss from 'postcss';
+import postcss, { rule } from 'postcss';
 import postcssrc from 'postcss-load-config';
 import syntax from 'postcss-syntax';
 import env from 'postcss-preset-env';
 import { promises as fs } from 'fs';
 import { sync as rimraf } from 'rimraf';
 import { createFilter } from 'rollup-pluginutils';
+
+import atImport from 'postcss-import';
 
 const paths = {
   from: 'src',
@@ -43,8 +45,29 @@ export default {
             }),
           ]).process(content, { from: filename });
 
+          const root = postcss.parse(content);
+          let deps = [];
+
+          console.log(root)
+
+          root.walkAtRules('import', (rule) => {
+            // const reg = /[^\\]+$/g;
+            // let str = rule.params.replace(/'/g, '');
+            // str = str.replace(/^.\//, '');
+            // str = str.replace(/\\/, '/');
+            // const file = filename.replace(reg, str)
+            // console.log(file);
+
+            // deps.push(str)
+
+            // -----------------------------------------------------------------
+
+            console.log(rule.source.input.from);
+          })
+
           return {
             code: css,
+            // dependencies: deps,
           };
         },
       },
